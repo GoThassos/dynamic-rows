@@ -101,10 +101,13 @@
             $.each(inputs, function () {
 
                 var id = $(this).prop('id').split(settings.divider),
-                    new_index = (parseInt(id[1], 10) + 1),
+                    current_name = $(this).prop('name'),
+                    current_index = parseInt(id[1], 10),
+                    new_index = (current_index + 1),
+                    new_name = current_name.replace(settings.divider + current_index, settings.divider + new_index),
                     new_id = id[0] + settings.divider + new_index;
 
-                $(this).prop('name', new_id)
+                $(this).prop('name', new_name)
                        .prop('id', new_id)
                        .val('');
 
